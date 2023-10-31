@@ -33,6 +33,14 @@ function displayQuote() {
   let taxAfterDiscountedRoomCost = discountedRoomCost * 0.12;
   let total = discountedRoomCost - taxAfterDiscountedRoomCost;
 
+  //output results
+  document.getElementById('originalRoomCost').value = `$${originalRoomCost.toFixed(2)}`;
+  document.getElementById('discount').value = `-$${discountOfRoomCost.toFixed(2)}`;
+  document.getElementById('discountedRoomCost').value = `$${discountedRoomCost.toFixed(
+    2
+  )}`;
+  document.getElementById('tax').value = `$${taxAfterDiscountedRoomCost.toFixed(2)}`;
+  document.getElementById('totalCost').value = `$${total.toFixed(2)}`;
 }
 
 function getRoomType(listOfRooms) {
@@ -106,16 +114,19 @@ function validateParty(partySize, roomType) {
     case 'queen':
       if (partySize > 5) {
         alert('The room you selected will not hold your party.');
+        throw new Error('The room you selected will not hold your party.');
       }
       break;
     case 'king':
       if (partySize > 2) {
         alert('The room you selected will not hold your party.');
+        throw new Error('The room you selected will not hold your party.');
       }
       break;
     case '2BedSuite':
       if (partySize > 6) {
         alert('The room you selected will not hold your party.');
+        throw new Error('The room you selected will not hold your party.');
       }
       break;
   }
