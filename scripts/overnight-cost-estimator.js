@@ -15,17 +15,17 @@ function displayQuote() {
   const checkinDateValue = document.getElementById('checkinDate').value;
   const checkinDate = new Date(checkinDateValue.replace(/-/g, '/'));
   const numNights = document.getElementById('numNights').value;
-  const roomType = getRoomType(document.getElementsByName('roomType'));
+  const roomType = document.querySelector('input[name="roomType"]:checked').value;
   const partySize = getPartySize(
     document.getElementById('numAdults').value,
     document.getElementById('numChildren').value
   );
-  const discountType = getDiscountValue(document.getElementsByName('discounts'));
+  const discountType = document.querySelector('input[name="discounts"]:checked').value;
 
   let roomRate = getRoomRate(checkinDate, roomType);
   let discount = getDiscount(discountType);
 
-  validateParty(partySize, roomType);
+  validateParty(partySize.adults + partySize.children, roomType);
 
   let originalRoomCost = roomRate * numNights;
   let discountOfRoomCost = originalRoomCost * discount;
@@ -41,32 +41,18 @@ function displayQuote() {
   )}`;
   document.getElementById('tax').value = `$${taxAfterDiscountedRoomCost.toFixed(2)}`;
   document.getElementById('totalCost').value = `$${total.toFixed(2)}`;
-}
-
-function getRoomType(listOfRooms) {
-  let roomType;
-  listOfRooms.forEach((room) => {
-    if (room.checked) {
-      roomType = room.value;
-    }
-  });
-  return roomType;
+  document.getElementById('confirmationNumber').innerText = generateConfirmationNumber(
+    fullName,
+    checkinDate,
+    numNights,
+    partySize
+  );
 }
 
 function getPartySize(numAdults, numChildren) {
   const adults = +numAdults;
   const children = +numChildren;
-  return adults + children;
-}
-
-function getDiscountValue(listOfDiscounts) {
-  let discountType;
-  listOfDiscounts.forEach((discount) => {
-    if (discount.checked) {
-      discountType = discount.value;
-    }
-  });
-  return discountType;
+  return { adults, children };
 }
 
 function getRoomRate(checkin, room) {
@@ -130,4 +116,12 @@ function validateParty(partySize, roomType) {
       }
       break;
   }
+}
+
+function generateConfirmationNumber(name, date, days, party) {
+  return `${name
+    .substring(0, 3)
+    .toUpperCase()}-${date.getMonth()}${date.getFullYear()}-${days}:${party.adults}:${
+    party.children
+  }`;
 }
