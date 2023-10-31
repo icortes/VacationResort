@@ -43,7 +43,7 @@
     <!-- Main -->
     <main class="container-md d-flex flex-column align-items-center">
       <form class="card my-3">
-        <div class="card-header h3">Overnight Cost Estimator</div>
+        <div class="card-header h3 text-center">Overnight Cost Estimator</div>
         <div class="card-body">
           <!-- Name -->
           <div class="input-group mb-2">
@@ -63,6 +63,7 @@
               type="email"
               aria-label="Email"
               id="email"
+              autocomplete="email"
               required />
           </div>
           <!-- Check-in Date -->
@@ -90,7 +91,7 @@
           </div>
           <!-- Room Type -->
           <p class="form-label">Room Type</p>
-          <div class="mb-2">
+          <div class="form-control mb-2">
             <!-- Queen Room -->
             <div class="form-check form-check-inline">
               <input
@@ -122,9 +123,75 @@
                 id="2BedSuiteRoom"
                 value="2BedSuite"
                 required />
-              <label class="form-check-label" for="2BedSuite">2-Bedroom Suite</label>
+              <label class="form-check-label" for="2BedSuiteRoom">2-Bedroom Suite</label>
             </div>
           </div>
+          <!-- Party Size -->
+          <p class="form-label">Party Size</p>
+          <div class="input-group mb-2">
+            <span class="input-group-text">Adults (1-4)</span>
+            <input
+              class="form-control text-end"
+              type="number"
+              aria-label="Number of Adults"
+              id="numAdults"
+              min="1"
+              max="4"
+              value="1" />
+            <span class="input-group-text">Children (0-4)</span>
+            <input
+              class="form-control text-end"
+              type="number"
+              aria-label="Number of Children"
+              id="numChildren"
+              min="0"
+              max="4"
+              value="0" />
+          </div>
+          <!-- Discounts -->
+          <p class="form-label">Discounts</p>
+          <div class="form-control mb-2">
+            <!-- No Discount -->
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="discounts"
+                id="noDiscount"
+                value="none"
+                checked
+                required />
+              <label class="form-check-label" for="noDiscount">None</label>
+            </div>
+            <!-- AAA/Senior -->
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="discounts"
+                id="seniorDiscount"
+                value="senior"
+                required />
+              <label class="form-check-label" for="seniorDiscount">
+                AAA/Senior (10%)
+              </label>
+            </div>
+            <!-- Military -->
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="discounts"
+                id="militaryDiscount"
+                value="military"
+                required />
+              <label class="form-check-label" for="militaryDiscount">
+                Military (20%)
+              </label>
+            </div>
+          </div>
+          <!-- Submit Button -->
+          <button class="btn btn-outline-light" type="submit">Submit</button>
         </div>
       </form>
     </main>
