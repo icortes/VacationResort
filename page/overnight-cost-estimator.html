@@ -43,11 +43,11 @@
     <!-- Main -->
     <main class="container-md d-flex flex-column align-items-center">
       <form class="card my-3">
-        <div class="card-header">Overnight Cost Estimator</div>
+        <div class="card-header h3">Overnight Cost Estimator</div>
         <div class="card-body">
           <!-- Name -->
           <div class="input-group mb-2">
-            <span class="input-group-text"> Full Name </span>
+            <span class="input-group-text">Full Name</span>
             <input
               class="form-control"
               type="text"
@@ -57,13 +57,73 @@
           </div>
           <!-- Email -->
           <div class="input-group mb-2">
-            <span class="input-group-text"> Email </span>
+            <span class="input-group-text">Email</span>
             <input
               class="form-control"
               type="email"
               aria-label="Email"
               id="email"
               required />
+          </div>
+          <!-- Check-in Date -->
+          <div class="input-group mb-2">
+            <span class="input-group-text">Check-in Date</span>
+            <input
+              class="form-control"
+              type="date"
+              aria-label="Check-in Date"
+              id="checkinDate"
+              required />
+          </div>
+          <!-- Total Days Visiting -->
+          <div class="input-group mb-2">
+            <span class="input-group-text">Number of Nights (1-28)</span>
+            <input
+              class="form-control text-end"
+              type="number"
+              aria-label="Number of Nights"
+              id="numNights"
+              min="1"
+              max="28"
+              value="1"
+              required />
+          </div>
+          <!-- Room Type -->
+          <p class="form-label">Room Type</p>
+          <div class="mb-2">
+            <!-- Queen Room -->
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="roomType"
+                id="queenRoom"
+                value="queen"
+                required />
+              <label class="form-check-label" for="queenRoom">Queen</label>
+            </div>
+            <!-- King Room -->
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="roomType"
+                id="kingRoom"
+                value="king"
+                required />
+              <label class="form-check-label" for="kingRoom">King</label>
+            </div>
+            <!-- 2-Bedroom Suite -->
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="roomType"
+                id="2BedSuiteRoom"
+                value="2BedSuite"
+                required />
+              <label class="form-check-label" for="2BedSuite">2-Bedroom Suite</label>
+            </div>
           </div>
         </div>
       </form>
