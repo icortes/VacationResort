@@ -1,6 +1,10 @@
 'use strict';
 
 window.onload = () => {
+  /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+  particlesJS.load('particles-js', '/assets/particles/particlesjs-config.json', function () {
+    console.log('callback - particles.js config loaded');
+  });
   const estimateForm = document.getElementById('estimateForm');
   estimateForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -31,7 +35,7 @@ function displayQuote() {
   let discountOfRoomCost = originalRoomCost * discount;
   let discountedRoomCost = originalRoomCost - discountOfRoomCost;
   let taxAfterDiscountedRoomCost = discountedRoomCost * 0.12;
-  let total = discountedRoomCost - taxAfterDiscountedRoomCost;
+  let total = discountedRoomCost + taxAfterDiscountedRoomCost;
 
   //output results
   document.getElementById('originalRoomCost').value = `$${originalRoomCost.toFixed(2)}`;
