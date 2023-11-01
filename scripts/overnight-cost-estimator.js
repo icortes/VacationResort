@@ -2,9 +2,13 @@
 
 window.onload = () => {
   /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-  particlesJS.load('particles-js', '/assets/particles/particlesjs-config.json', function () {
-    console.log('callback - particles.js config loaded');
-  });
+  particlesJS.load(
+    'particles-js',
+    '/assets/particles/particlesjs-config.json',
+    function () {
+      console.log('callback - particles.js config loaded');
+    }
+  );
   const estimateForm = document.getElementById('estimateForm');
   estimateForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -29,8 +33,10 @@ function displayQuote() {
   let roomRate = getRoomRate(checkinDate, roomType);
   let discount = getDiscount(discountType);
 
+  //validate party size
   validateParty(partySize.adults + partySize.children, roomType);
 
+  // calculate
   let originalRoomCost = roomRate * numNights;
   let discountOfRoomCost = originalRoomCost * discount;
   let discountedRoomCost = originalRoomCost - discountOfRoomCost;
